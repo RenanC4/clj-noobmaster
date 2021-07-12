@@ -195,3 +195,29 @@
   (println (str "treasury lat: " lat))
   (println (str "trasury lang: " lang))
   (str "steer-ship!" treasury-location))
+
+(defn illustrative-function
+  []
+  (+ 1 1024)
+  30
+  "Renan")
+
+(defn number-comment
+  [x]
+  (if (> x 6)
+    (str "Que numero ernorme ----lenny face----")
+    (str "Numero ok")))
+
+
+(map (fn [name] (str "Hi, " name))
+     ["Darth Vader" "Mr. M"])
+
+((fn [x] (* x 3)) 8)
+
+(def my-special-multiplication (fn [x] (* x 3)))
+
+#(* % 3)
+(#(* % 3) 8)
+
+(map #(str "Hi, " %)
+     ["Mr M" "Mr Catra"])
