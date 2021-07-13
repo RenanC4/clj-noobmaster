@@ -221,3 +221,29 @@
 
 (map #(str "Hi, " %)
      ["Mr M" "Mr Catra"])
+
+(defn valor-descontado
+  [valor-bruto]
+  (let [taxa-de-desconto 0.1
+        desconto         (* valor-bruto taxa-de-desconto)]
+    (- valor-bruto desconto)))
+
+(defn valor-descontado-maior-que-cem
+  [aplica-desconto? valor-bruto]
+  (if (aplica-desconto? valor-bruto)
+    (let [taxa-de-desconto 0.1
+          desconto (* valor-bruto taxa-de-desconto)]
+      (- valor-bruto desconto))
+    valor-bruto))
+
+(defn desconto-aplicavel?
+  [valor]
+  (> valor 100))
+
+
+(def precos [20 700 10000])
+
+(get precos 0)
+
+(filter desconto-aplicavel? precos)
+(reduce + precos)
