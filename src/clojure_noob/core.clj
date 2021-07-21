@@ -247,3 +247,17 @@
 
 (filter desconto-aplicavel? precos)
 (reduce + precos)
+
+(#(str %1 " and " %2) "Corn bread" "butterbeans")
+
+(#(identity %&) 1 "jim" :loves "pan")
+
+(defn inc-maker
+  "create a custom incrementor"
+  [inc-by]
+  #(+ % inc-by))
+
+(def inc3 (inc-maker 3))
+
+(inc3 7)
+

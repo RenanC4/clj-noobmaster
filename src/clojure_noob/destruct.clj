@@ -25,3 +25,9 @@
   (<= (get item :preco 0) 0))
 
 (filter gratuito? pedido)
+
+(defn myfirst
+  [[first-thing & uninportant-things]]
+  uninportant-things)
+
+(myfirst ["uni" "duni" "te"])
