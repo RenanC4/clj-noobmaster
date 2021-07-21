@@ -91,3 +91,62 @@
 (replacing-match-part {:name "left-egg" :size 1})
 (replacing-match-part {:name "head" :size 5})
 
+(reduce + [1 2 3 4 5])
+(+ (+ (+ (+ 1 2) 3) 4) 5)
+
+(reduce + 15 [1 2 3 4 5])
+
+(defn better-symmetrize-body-parts
+  "Expects a seq of maps that have a :name and :size"
+  [asym-body-parts]
+  (reduce (fn [final-body-parts part]
+            (into final-body-parts (set [part (matching-part part)])))
+          []
+          asym-body-parts))
+
+(better-symmetrize-body-parts asym-hobbit-body-parts)
+
+(defn hit
+  [asym-hobbit-body-parts]
+  (let [sym-parts (better-symmetrize-body-parts asym-hobbit-body-parts)
+    body-part-size-sum (reduce + (map :size sym-parts))
+    target (rand body-part-size-sum)]
+   (loop [[part & remaining] sym-parts
+          accumulated-size (:size part)]
+     (if (> accumulated-size target)
+       part
+       (recur remaining (+ accumulated-size (:size (first remaining))))))))
+
+
+(hit asym-hobbit-body-parts)
+
+
+;exercises
+
+;1
+(str "Renan " "Campos " 25 " anos")
+(vector "a" 2 "feijao" :renan {:nome {:primeiro "Renan" :segundo "Campos"}})
+(list 1 2 3)
+(def batata (hash-map :renan 1 :campos "2" "2" :ribeiro))
+(println batata)
+(hash-set batata  "Renan" 5 )
+
+;2
+(defn inc-100
+  [number]
+  (+ 100 number))
+
+(inc-100 12)
+
+;3
+(defn dec-maker
+  [number]
+  #(- % number))
+
+(def minus-ten (dec-maker 10))
+
+(minus-ten 11)
+
+;4
+
+(map inc [1 1 2 2])
